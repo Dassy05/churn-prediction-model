@@ -53,7 +53,6 @@ customer_churn_prediction/
   ```
 
 ## Model Details
-
 ### Model Architecture
 The final model is a tuned **XGBoost Classifier** optimized via 5-Fold Grid Search CV using ROC-AUC as the scoring metric. To address the class imbalance in the training data, Synthetic Minority Over-sampling Technique (**SMOTE**) was applied to the training split.
 

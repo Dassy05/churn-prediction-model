@@ -1,0 +1,231 @@
+[33mcommit 63fedd36de7cf897e54ace881973dbc57bdaa704[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Dassy05 <deepanshuyadav993621@gmail.com>
+Date:   Thu Jun 11 16:39:03 2026 +0530
+
+    chore:prepare codebase for Streamlit deployment
+
+[1mdiff --git a/.gitignore b/.gitignore[m
+[1mnew file mode 100644[m
+[1mindex 0000000..5b094a3[m
+[1m--- /dev/null[m
+[1m+++ b/.gitignore[m
+[36m@@ -0,0 +1,145 @@[m
+[32m+[m[32m# Byte-compiled / optimized / DLL files[m
+[32m+[m[32m__pycache__/[m
+[32m+[m[32m*.py[cod][m
+[32m+[m[32m*$py.class[m
+[32m+[m
+[32m+[m[32m# C extensions[m
+[32m+[m[32m*.so[m
+[32m+[m
+[32m+[m[32m# Distribution / packaging[m
+[32m+[m[32mbuild/[m
+[32m+[m[32mdevelop-eggs/[m
+[32m+[m[32mdist/[m
+[32m+[m[32mdownloads/[m
+[32m+[m[32meggs/[m
+[32m+[m[32m.eggs/[m
+[32m+[m[32mlib/[m
+[32m+[m[32mlib64/[m
+[32m+[m[32mparts/[m
+[32m+[m[32msdist/[m
+[32m+[m[32mvar/[m
+[32m+[m[32mwheels/[m
+[32m+[m[32mpip-wheel-metadata/[m
+[32m+[m[32mshare/python-wheels/[m
+[32m+[m[32m*.egg-info/[m
+[32m+[m[32m.installed.cfg[m
+[32m+[m[32m*.egg[m
+[32m+[m[32mMANIFEST[m
+[32m+[m
+[32m+[m[32m# PyInstaller[m
+[32m+[m[32m#  Usually these files are written by a python script run within a install[m
+[32m+[m[32m#  directory; and may contain local paths[m
+[32m+[m[32m*.manifest[m
+[32m+[m[32m*.spec[m
+[32m+[m
+[32m+[m[32m# Installer logs[m
+[32m+[m[32mpip-log.txt[m
+[32m+[m[32msqlite3_log.txt[m
+[32m+[m
+[32m+[m[32m# Unit test / coverage reports[m
+[32m+[m[32mhtmlcov/[m
+[32m+[m[32m.tox/[m
+[32m+[m[32m.nox/[m
+[32m+[m[32m.coverage[m
+[32m+[m[32m.coverage.*[m
+[32m+[m[32m.cache[m
+[32m+[m[32mnosetests.xml[m
+[32m+[m[32mcoverage.xml[m
+[32m+[m[32m*.cover[m
+[32m+[m[32m*.py,cover[m
+[32m+[m[32m.hypothesis/[m
+[32m+[m[32m.pytest_cache/[m
+[32m+[m[32mcover/[m
+[32m+[m
+[32m+[m[32m# Translations[m
+[32m+[m[32m*.mo[m
+[32m+[m[32m*.pot[m
+[32m+[m
+[32m+[m[32m# Django stuff:[m
+[32m+[m[32m*.log[m
+[32m+[m[32mlocal_settings.py[m
+[32m+[m[32mdb.sqlite3[m
+[32m+[m[32mdb.sqlite3-journal[m
+[32m+[m
+[32m+[m[32m# Sphinx documentation[m
+[32m+[m[32mdocs/_build/[m
+[32m+[m
+[32m+[m[32m# PyBuilder[m
+[32m+[m[32mtarget/[m
+[32m+[m
+[32m+[m[32m# Jupyter Notebook[m
+[32m+[m[32m.ipynb_checkpoints[m
+[32m+[m
+[32m+[m[32m# IPython[m
+[32m+[m[32mprofile_default/[m
+[32m+[m[32mipython_config.py[m
+[32m+[m
+[32m+[m[32m# pyenv[m
+[32m+[m[32m.python-version[m
+[32m+[m
+[32m+[m[32m# pipenv[m
+[32m+[m[32m#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.[m
+[32m+[m[32m#   However, in case of collaboration, if platform is rather diverse, it may be better to ignore Pipfile.lock.[m
+[32m+[m[32m#   https://pipenv.pypa.io/en/latest/user/use/#pipfile-vs-setup-py[m
+[32m+[m[32m#Pipfile.lock[m
+[32m+[m
+[32m+[m[32m# poetry[m
+[32m+[m[32m#   Similar to Pipfile.lock, poetry.lock contains specific versions of dependencies[m
+[32m+[m[32m#poetry.lock[m
+[32m+[m
+[32m+[m[32m# pdm[m
+[32m+[m[32m#   Similar to Pipfile.lock, pdm.lock contains specific versions of dependencies[m
+[32m+[m[32m#pdm.lock[m
+[32m+[m
+[32m+[m[32m# PEP 582; project local dependency directory; primary used by pdm and rye[m
+[32m+[m[32m__pypackages__/[m
+[32m+[m
+[32m+[m[32m# Celery stuff[m
+[32m+[m[32mcelerybeat-schedule[m
+[32m+[m[32mcelerybeat.pid[m
+[32m+[m
+[32m+[m[32m# SageMath parsed files[m
+[32m+[m[32m*.sage.py[m
+[32m+[m
+[32m+[m[32m# Environments[m
+[32m+[m[32m.env[m
+[32m+[m[32m.venv[m
+[32m+[m[32menv/[m
+[32m+[m[32mvenv/[m
+[32m+[m[32mENV/[m
+[32m+[m[32menv.bak/[m
+[32m+[m[32mvenv.bak/[m
+[32m+[m
+[32m+[m[32m# Spyder project settings[m
+[32m+[m[32m.spyderproject[m
+[32m+[m[32m.spyproject[m
+[32m+[m
+[32m+[m[32m# Rope project settings[m
+[32m+[m[32m.ropeproject[m
+[32m+[m
+[32m+[m[32m# mkdocs documentation[m
+[32m+[m[32m/site[m
+[32m+[m
+[32m+[m[32m# mypy[m
+[32m+[m[32m.mypy_cache/[m
+[32m+[m[32m.dmypy.json[m
+[32m+[m[32mdmypy.json[m
+[32m+[m
+[32m+[m[32m# Pyre type checker[m
+[32m+[m[32m.pyre/[m
+[32m+[m
+[32m+[m[32m# pytype[m
+[32m+[m[32m.pytype/[m
+[32m+[m
+[32m+[m[32m# Cython debug symbols[m
+[32m+[m[32mcython_debug/[m
+[32m+[m
+[32m+[m[32m# OS stuff[m
+[32m+[m[32m.DS_Store[m
+[32m+[m[32mThumbs.db[m
+[32m+[m
+[32m+[m[32m# IDEs[m
+[32m+[m[32m.idea/[m
+[32m+[m[32m.vscode/[m
+[32m+[m[32m*.swp[m
+[32m+[m[32m*.swo[m
+[1mdiff --git a/README.md b/README.md[m
+[1mnew file mode 100644[m
+[1mindex 0000000..d5bc8f1[m
+[1m--- /dev/null[m
+[1m+++ b/README.md[m
+[36m@@ -0,0 +1,73 @@[m
+[32m+[m[32m# Customer Churn Prediction Project[m
+[32m+[m
+[32m+[m[32mThis project implements an end-to-end Machine Learning pipeline to predict customer churn. It includes data preprocessing, feature engineering, model training, evaluation, and a web application for serving predictions.[m
+[32m+[m
+[32m+[m[32m## Project Structure[m
+[32m+[m
+[32m+[m[32m```text[m
+[32m+[m[32mcustomer_churn_prediction/[m
+[32m+[m[32m├── data/                  # Data directory[m
+[32m+[m[32m│   ├── raw/               # Original raw data[m
+[32m+[m[32m│   └── processed/         # Cleaned and engineered data for modeling[m
+[32m+[m[32m├── notebooks/             # Jupyter notebooks for EDA and experimentation[m
+[32m+[m[32m├── src/                   # Source code modules[m
+[32m+[m[32m│   ├── __init__.py[m
+[32m+[m[32m│   ├── data_preprocessing.py[m
+[32m+[m[32m│   ├── feature_engineering.py[m
+[32m+[m[32m│   ├── model_training.py[m
+[32m+[m[32m│   └── evaluation.py[m
+[32m+[m[32m├── models/                # Saved serialized model artifacts (e.g., joblib/pickle)[m
+[32m+[m[32m├── app/                   # Web application (Streamlit or FastAPI)[m
+[32m+[m[32m│   ├── __init__.py[m
+[32m+[m[32m│   └── app.py[m
+[32m+[m[32m├── requirements.txt       # Project python dependencies[m
+[32m+[m[32m└── README.md              # Project documentation template[m
+[32m+[m[32m```[m
+[32m+[m
+[32m+[m[32m## Setup Instructions[m
+[32m+[m
+[32m+[m[32m1. **Create a virtual environment:**[m
+[32m+[m[32m   ```bash[m
+[32m+[m[32m   python -m venv venv[m
+[32m+[m[32m   source venv/Scripts/activate  # On Windows: venv\Scripts\activate[m
+[32m+[m[32m   ```[m
+[32m+[m
+[32m+[m[32m2. **Install dependencies:**[m
+[32m+[m[32m   ```bash[m
+[32m+[m[32m   pip install -r requirements.txt[m
+[32m+[m[32m   ```[m
+[32m+[m
+[32m+[m[32m## How to Run[m
+[32m+[m
+[32m+[m[32m- **Exploratory Data Analysis:** Run Jupyter Lab or Notebook:[m
+[32m+[m[32m  ```bash[m
+[32m+[m[32m  jupyter notebook[m
+[32m+[m[32m  ```[m
+[32m+[m[32m- **Train Model:** Run the training script:[m
+[32m+[m[32m  ```bash[m
+[32m+[m[32m  python src/model_training.py[m
+[32m+[m[32m  ```[m
+[32m+[m[32m- **Run Web App:** Start the Streamlit application:[m
+[32m+[m[32m  ```bash[m
+[32m+[m[32m  streamlit run app/app.py[m
+[32m+[m[32m  ```[m
+[32m+[m
+[32m+[m[32m## Model Details[m
+[32m+[m
+[32m+[m[32m### Model Architecture[m
+[32m+[m[32mThe final model is a tuned **XGBoost Classifier** optimized via 5-Fold Grid Search CV using ROC-AUC as the scoring metric. To address the class imbalance in the training data, Synthetic Minority Over-sampling Technique (**SMOTE**) was applied to the training split.[m
+[32m+[m
+[32m+[m[32m### Evaluation Metrics (on Test Set)[m
+[32m+[m[32m* **Accuracy:** 78.42%[m
+[32m+[m[32m* **Precision:** 59.21%[m
+[32m+[m[32m* **Recall (Sensitivity):** 60.16%[m
+[32m+[m[32m* **F1-Score:** 59.68%[m
+[32m+[m[32m* **ROC-AUC Score:** 82.59%[m
+[32m+[m
+[32m+[m[32m### Top Feature Importances (SHAP)[m
+[32m+[m[32mExplainability analysis using SHAP (SHapley Additive exPlanations) highlights the top features

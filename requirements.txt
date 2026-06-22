@@ -16,10 +16,3 @@ streamlit>=1.10.0
 fastapi>=0.75.0
 uvicorn>=0.17.0
 python-dotenv>=0.19.0
-
-# Development Tools
-ipykernel
-jupyter
-pytest
-black
-flake8
